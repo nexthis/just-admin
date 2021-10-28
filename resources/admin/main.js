@@ -32,15 +32,3 @@ createInertiaApp({
     }).$mount(el)
   },
 })
-
-// new Vue({
-//   store,
-//   vuetify,
-//   i18n,
-//   render: h => h(App, {
-//     props: {
-//       initialPage: JSON.parse(el.dataset.page),
-//       resolveComponent: name =>  import(`@admin/views/${name}`).then(module => module.default),
-//     },
-//   }),
-// }).$mount('#app')

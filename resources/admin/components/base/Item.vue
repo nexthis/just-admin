@@ -18,7 +18,6 @@
 
     <v-list-item-content v-if="item.title || item.subtitle">
       <v-list-item-title v-text="item.title" />
-
       <v-list-item-subtitle v-text="item.subtitle" />
     </v-list-item-content>
   </v-list-item>

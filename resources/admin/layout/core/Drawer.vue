@@ -28,12 +28,10 @@
       <v-list-item>
         <v-list-item-avatar
             class="align-self-center"
-            color="white"
             contain
         >
           <v-img
               :src="require('@admin/assets/logo.png').default"
-              max-height="30"
           />
         </v-list-item-avatar>
 
@@ -94,7 +92,7 @@
 import {
   mapState,
 } from 'vuex'
-// import Routes from '@admin/route'
+import routes from '@admin/drawer'
 export default {
   name: 'DashboardCoreDrawer',
   props: {
@@ -103,9 +101,12 @@ export default {
       default: false,
     },
   },
-  data: () => ({
-    items: [],
-  }),
+  data() {
+    return({
+      items:routes
+    })
+  },
+
   computed: {
     ...mapState(['barColor', 'barImage']),
     drawer: {
@@ -122,7 +123,7 @@ export default {
     profile () {
       return {
         avatar: true,
-        title: this.$t('avatar'),
+        title: this.$t('name'),
       }
     },
   },
