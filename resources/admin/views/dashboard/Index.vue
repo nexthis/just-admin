@@ -1,28 +1,24 @@
+
 <template>
-  <v-app>
-    <dashboard-core-app-bar />
+  <v-container
+      id="dashboard"
+      fluid
+      tag="section"
+  >
 
-    <dashboard-core-drawer />
-
-    <dashboard-core-view />
-
-    <dashboard-core-settings />
-  </v-app>
+  </v-container>
 </template>
 
+
 <script>
-  export default {
-    name: 'DashboardIndex',
+import Layout from '@admin/layout/Base'
+export default {
+  layout: [Layout],
+  breadcrumbs: [{
+    text: 'Dashboard',
+    disabled: false,
+  }],
 
-    components: {
-      DashboardCoreAppBar: () => import('./components/core/AppBar'),
-      DashboardCoreDrawer: () => import('./components/core/Drawer'),
-      DashboardCoreSettings: () => import('./components/core/Settings'),
-      DashboardCoreView: () => import('./components/core/View'),
-    },
 
-    data: () => ({
-      expandOnHover: false,
-    }),
-  }
+}
 </script>

@@ -1,9 +1,10 @@
 import Vue from 'vue'
+import RouteLink from "@admin/components/base/RouterLink";
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
 const requireComponent = require.context(
-  '@/components/base', true, /\.vue$/,
+  '@admin/components/base', true, /\.vue$/,
 )
 
 requireComponent.keys().forEach(fileName => {
@@ -15,3 +16,6 @@ requireComponent.keys().forEach(fileName => {
 
   Vue.component(`Base${componentName}`, componentConfig.default || componentConfig)
 })
+
+
+Vue.component( 'router-link', RouteLink)

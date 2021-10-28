@@ -12,21 +12,35 @@
 // * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
 import store from './store'
 import './plugins/base'
-import './plugins/chartist'
-import './plugins/vee-validate'
 import vuetify from './plugins/vuetify'
 import i18n from './i18n'
+import { createInertiaApp } from '@inertiajs/inertia-vue'
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  i18n,
-  render: h => h(App),
-}).$mount('#app')
+const el = document.getElementById('app')
+createInertiaApp({
+  resolve: name => import(`@admin/views/${name}`).then(module => module.default),
+  setup({ el, App, props }) {
+    new Vue({
+      store,
+      vuetify,
+      i18n,
+      render: h => h(App, props),
+    }).$mount(el)
+  },
+})
+
+// new Vue({
+//   store,
+//   vuetify,
+//   i18n,
+//   render: h => h(App, {
+//     props: {
+//       initialPage: JSON.parse(el.dataset.page),
+//       resolveComponent: name =>  import(`@admin/views/${name}`).then(module => module.default),
+//     },
+//   }),
+// }).$mount('#app')

@@ -1,7 +1,8 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
-import i18n from '@/i18n'
-import '@/sass/overrides.sass'
+import Vuetify from 'vuetify'
+import i18n from '@admin/i18n'
+import '@admin/sass/overrides.sass'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
 
