@@ -13,7 +13,7 @@ class DashboardController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         return Inertia::render('dashboard/Index');
     }

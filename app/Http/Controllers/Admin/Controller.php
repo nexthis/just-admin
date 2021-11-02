@@ -57,7 +57,12 @@ class Controller extends BaseController
             $beforeConfig($data);
         }
 
-        $config = collect(['config' => config('admin.paginate')]);
+        $config = collect(['config' => config('admin.paginate', [
+            'items_per_page_options' => [20,40,60,80,100],
+            'items_max' => 100,
+            'items_default' => 20,
+        ])]);
+
         $data = $config->merge($data);
         return $data;
     }

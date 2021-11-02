@@ -9,6 +9,7 @@
 <script>
 import  urlHelper from '@admin/helpers/url'
 import { Inertia } from '@inertiajs/inertia'
+import { Link } from '@inertiajs/inertia-vue'
 export default {
   name: "RouterLink",
   props: {
@@ -52,6 +53,9 @@ export default {
   data: () =>({
     currentUrl:  false,
   }),
+  components:{
+    Link
+  },
   mounted() {
     this.currentUrl = urlHelper.isCurrentUrl(this.to);
     Inertia.on('finish', () => {

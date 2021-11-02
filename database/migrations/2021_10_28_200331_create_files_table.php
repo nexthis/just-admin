@@ -17,16 +17,17 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('extension', 255);
-            $table->text('source');
+            $table->text('source')->nullable();
             $table->text('original_name');
-            $table->text('title');
+            $table->text('title')->nullable();
             $table->integer('height')->nullable();
             $table->integer('width')->nullable();
             $table->integer('length')->nullable();
             $table->integer('size');
-            $table->enum('type', ['image', 'video', 'file']);
-            $table->foreignId('user_id');
+            $table->enum('type', ['image', 'video', 'audio', 'application', 'font', 'model', 'text']);
+            $table->foreignId('user_id')->nullable();
             $table->boolean('multi_size')->default(false);
+            $table->boolean('public')->default(true);
             $table->timestamps();
         });
     }

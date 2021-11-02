@@ -4,12 +4,12 @@ export default [
     {
         icon: 'mdi-account-multiple',
         title: i18n.t('drawer.user'),
-        to: '/users'
+        to: route('admin.user.index')
     },
     {
         icon: 'mdi-file',
         title: i18n.t('drawer.file'),
-        to: '/files'
+        to: route('admin.file.index')
     },
     {
         icon: 'mdi-server',

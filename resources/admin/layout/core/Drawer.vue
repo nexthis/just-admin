@@ -25,7 +25,7 @@
         dense
         nav
     >
-      <v-list-item>
+      <v-list-item :to="homeUrl" >
         <v-list-item-avatar
             class="align-self-center"
             contain
@@ -126,6 +126,9 @@ export default {
         title: this.$t('name'),
       }
     },
+    homeUrl(){
+      return route('admin.')
+    }
   },
   methods: {
     mapItem (item) {

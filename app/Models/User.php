@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasThumbs;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasThumbs;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+    ];
+
+    public static $thumbsConfig = [
+        'default' => ['aspect' => [16, 9]],
+        'square' => ['size' => [100,100]]
     ];
 
     /**
