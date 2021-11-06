@@ -33,12 +33,22 @@
     <div>
       <v-row>
         <v-col v-for="item in data" :cols="12" :lg="2" :md="4" :sm="6">
-          <v-card>
+          <v-card :to="editLink(item.id)">
             <v-img :aspect-ratio="16/9" v-if="item.type === 'image'" :src="item.url"/>
-            <div>
-              <div>{{ item.original_name }}</div>
-              <div>{{ item.size }}</div>
-            </div>
+            <v-responsive :aspect-ratio="16/9" v-if="item.type !== 'image'">
+              <div class="d-flex justify-center h-full">
+                <v-icon class="text-h2" x-large>
+                  mdi-file
+                </v-icon>
+              </div>
+            </v-responsive>
+            <v-card-text>
+              <div>{{ item.name }}</div>
+              <div class="d-flex justify-space-between mt-2">
+                <div class="text-uppercase">{{ item.extension }}</div>
+                <div>{{ fileSize(item.size) }}</div>
+              </div>
+            </v-card-text>
           </v-card>
         </v-col>
       </v-row>
@@ -50,6 +60,7 @@
 <script>
 import Layout from '@admin/layout/Base'
 import FileAdd from '@admin/components/file/FileAdd'
+import {humanFileSize} from '@admin/helpers/file.js'
 
 export default {
   layout: [Layout],
@@ -65,6 +76,14 @@ export default {
   },
   created() {
     console.log(this.data)
+  },
+  methods: {
+    fileSize(size) {
+      return humanFileSize(size)
+    },
+    editLink(id){
+      return route('admin.file.edit', id)
+    }
   }
 }
 </script>

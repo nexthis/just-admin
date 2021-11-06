@@ -27,4 +27,10 @@ class FileController extends Controller
         $request->dd();
         return true;
     }
+
+    public function edit(File $file): \Inertia\Response
+    {
+        return Inertia::render('file/Edit', compact('file'));
+    }
+
 }
